@@ -1,0 +1,125 @@
+const int LED1 = 2;
+const int LED2 = 3;
+const int PB = 4;
+
+void setup()
+{
+  //Definiendo puertos
+  pinMode(LED1, OUTPUT);
+  pinMode(LED2, OUTPUT);
+  pinMode(PB, INPUT);
+}
+
+//LED#2_state_machine_var
+uint16_t counter_2 = 0;
+bool state_2 = false;
+
+//LED#1_state_machine_var
+uint16_t counter_1 = 0;
+bool state_1 = false;
+
+
+//LED #1 
+//-------------------------------------------------------------------------------------------------------------------------------------------
+/*void loop() 
+{
+  digitalWrite(LED1, LOW);
+  delay(1000);
+  digitalWrite(LED1, HIGH);
+  delay(500);
+}*/
+//-------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+//LED #2 
+//-------------------------------------------------------------------------------------------------------------------------------------------
+/*void loop() 
+{
+  int pb_state = digitalRead(PB);
+  counter_2++;
+  
+  if(pb_state == LOW){
+    
+    if(state_2 && counter_2 >= 800){
+      counter_2 = 0;
+      state_2 = false;
+    }
+    
+    else if(!state_2 && counter_2 >= 800){
+      counter_2 = 0;
+      state_2 = true;
+    }
+  }
+  
+  else {
+    
+    if(state_2 && counter_2 >= 50){
+      counter_2 = 0;
+      state_2 = false;
+    }
+    
+    else if(!state_2 && counter_2 >= 150){
+      counter_2 = 0;
+      state_2 = true;
+    }
+  }
+   digitalWrite(LED2, state_2);
+
+   delay(5);
+}*/
+//-------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+//LED #1 y LED #2 - Sistema Completo
+//-------------------------------------------------------------------------------------------------------------------------------------------
+void loop()
+{
+   int pb_state = digitalRead(PB);
+   counter_1++;
+   counter_2++;
+ 
+  if(state_1 && counter_1 >= 100){
+      counter_1 = 0;
+      state_1 = false;
+    }
+    
+    else if(!state_1 && counter_1 >= 200){
+      counter_1 = 0;
+      state_1 = true;
+    }
+    
+   digitalWrite(LED1, state_1);
+  
+  if(pb_state == LOW){
+    
+    if(state_2 && counter_2 >= 800){
+      counter_2 = 0;
+      state_2 = false;
+    }
+    
+    else if(!state_2 && counter_2 >= 800){
+      counter_2 = 0;
+      state_2 = true;
+    }
+  }
+  
+  else {
+    
+    if(state_2 && counter_2 >= 50){
+      counter_2 = 0;
+      state_2 = false;
+    }
+    
+    else if(!state_2 && counter_2 >= 150){
+      counter_2 = 0;
+      state_2 = true;
+    }
+  }
+   digitalWrite(LED2, state_2);
+
+   delay(5);
+}
+//-------------------------------------------------------------------------------------------------------------------------------------------
