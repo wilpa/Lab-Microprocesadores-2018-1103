@@ -173,3 +173,180 @@ void loop()
 }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+//-----------------------------------------------------------------TERCERA PARTE------------------------------------------------------------------------------------------------
+
+const int LED0 = 4;
+const int LED1 = 5;
+const int LED2 = 6;
+const int LED3 = 7;
+const int LED4 = 8;
+const int LED5 = 9;
+const int PB_UP = 2;
+const int PB_DOWN = 3;
+
+void setup()
+{
+  pinMode(LED0, OUTPUT);
+  pinMode(LED1, OUTPUT);
+  pinMode(LED2, OUTPUT);
+  pinMode(LED3, OUTPUT);
+  pinMode(LED4, OUTPUT);
+  pinMode(LED5, OUTPUT);
+  pinMode(PB_UP, INPUT);
+  pinMode(PB_DOWN, INPUT);
+}
+
+bool led5_state = false;
+bool led4_state = false;
+bool led3_state = false;
+bool led2_state = false;
+bool led1_state = false;
+bool led0_state = false;
+uint16_t counter = 0;
+int state = 0;
+
+
+void loop()
+{
+  
+  int pb_state_up = digitalRead(PB_UP);
+  int pb_state_down = digitalRead(PB_DOWN);
+  if( state==1 && pb_state_up  == 0 && pb_state_down == 0){
+    state = 0;
+  }
+  
+  if(pb_state_up == HIGH && state == 0){
+	state = 1;
+    
+    if(!led5_state){
+  led5_state = true;
+  led4_state = false;
+  led3_state = false;
+  led2_state = false;
+  led1_state = false;
+  led0_state = false;
+      
+    }
+  
+  else if(!led4_state){
+  led5_state = true;
+  led4_state = true;
+  led3_state = false;
+  led2_state = false;
+  led1_state = false;
+  led0_state = false;
+    }
+  
+    
+  else if(!led3_state){
+  led5_state = true;
+  led4_state = true;
+  led3_state = true;
+  led2_state = false;
+  led1_state = false;
+  led0_state = false;
+    }
+    
+   else if(!led2_state){
+  led5_state = true;
+  led4_state = true;
+  led3_state = true;
+  led2_state = true;
+  led1_state = false;
+  led0_state = false;
+    }
+    
+   else if(!led1_state){
+  led5_state = true;
+  led4_state = true;
+  led3_state = true;
+  led2_state = true;
+  led1_state = true;
+  led0_state = false;
+    }
+    
+   else{
+  led5_state = true;
+  led4_state = true;
+  led3_state = true;
+  led2_state = true;
+  led1_state = true;
+  led0_state = true;
+    }
+    
+  }
+  
+  else if(pb_state_down == HIGH && state == 0){
+	state = 1;
+    
+    if(led0_state){
+  led5_state = true;
+  led4_state = true;
+  led3_state = true;
+  led2_state = true;
+  led1_state = true;
+  led0_state = false;
+      
+    }
+  
+  else if(led1_state){
+  led5_state = true;
+  led4_state = true;
+  led3_state = true;
+  led2_state = true;
+  led1_state = false;
+  led0_state = false;
+    }
+  
+    
+  else if(led2_state){
+  led5_state = true;
+  led4_state = true;
+  led3_state = true;
+  led2_state = false;
+  led1_state = false;
+  led0_state = false;
+    }
+    
+   else if(led3_state){
+  led5_state = true;
+  led4_state = true;
+  led3_state = false;
+  led2_state = false;
+  led1_state = false;
+  led0_state = false;
+    }
+    
+   else if(led4_state){
+  led5_state = true;
+  led4_state = false;
+  led3_state = false;
+  led2_state = false;
+  led1_state = false;
+  led0_state = false;
+    }
+    
+   else{
+  led5_state = false;
+  led4_state = false;
+  led3_state = false;
+  led2_state = false;
+  led1_state = false;
+  led0_state = false;
+    }
+    
+  }
+  
+   digitalWrite(LED5, led5_state);
+   digitalWrite(LED4, led4_state); 
+   digitalWrite(LED3, led3_state);
+   digitalWrite(LED2, led2_state);
+   digitalWrite(LED1, led1_state);
+   digitalWrite(LED0, led0_state);
+}
+
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
