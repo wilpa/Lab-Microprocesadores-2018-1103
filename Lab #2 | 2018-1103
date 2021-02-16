@@ -145,7 +145,6 @@ bool led3_state = false;
 bool led2_state = false;
 bool led1_state = false;
 bool led0_state = false;
-uint16_t counter = 0;
 int state = 0;
 
 
@@ -324,7 +323,6 @@ bool led3_state = false;
 bool led2_state = false;
 bool led1_state = false;
 bool led0_state = false;
-uint16_t counter = 0;
 int state = 0;
 
 
